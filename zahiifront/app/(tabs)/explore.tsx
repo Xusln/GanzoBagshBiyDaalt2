@@ -1,5 +1,5 @@
 import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import { Platform, StyleSheet, Dimensions } from 'react-native';
 
 import { Collapsible } from '@/components/Collapsible';
 import { ExternalLink } from '@/components/ExternalLink';
@@ -7,6 +7,8 @@ import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { IconSymbol } from '@/components/ui/IconSymbol';
+
+const { width } = Dimensions.get('window'); // Get screen width for responsiveness
 
 export default function TabTwoScreen() {
   return (
@@ -23,7 +25,10 @@ export default function TabTwoScreen() {
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">Explore</ThemedText>
       </ThemedView>
-      <ThemedText>This app includes example code to help you get started.</ThemedText>
+      <ThemedText style={styles.descriptionText}>
+        This app includes example code to help you get started.
+      </ThemedText>
+      
       <Collapsible title="File-based routing">
         <ThemedText>
           This app has two screens:{' '}
@@ -38,23 +43,26 @@ export default function TabTwoScreen() {
           <ThemedText type="link">Learn more</ThemedText>
         </ExternalLink>
       </Collapsible>
+
       <Collapsible title="Android, iOS, and web support">
         <ThemedText>
           You can open this project on Android, iOS, and the web. To open the web version, press{' '}
           <ThemedText type="defaultSemiBold">w</ThemedText> in the terminal running this project.
         </ThemedText>
       </Collapsible>
+
       <Collapsible title="Images">
         <ThemedText>
           For static images, you can use the <ThemedText type="defaultSemiBold">@2x</ThemedText> and{' '}
           <ThemedText type="defaultSemiBold">@3x</ThemedText> suffixes to provide files for
-          different screen densities
+          different screen densities.
         </ThemedText>
-        <Image source={require('@/assets/images/react-logo.png')} style={{ alignSelf: 'center' }} />
+        <Image source={require('@/assets/images/react-logo.png')} style={styles.image} />
         <ExternalLink href="https://reactnative.dev/docs/images">
           <ThemedText type="link">Learn more</ThemedText>
         </ExternalLink>
       </Collapsible>
+
       <Collapsible title="Custom fonts">
         <ThemedText>
           Open <ThemedText type="defaultSemiBold">app/_layout.tsx</ThemedText> to see how to load{' '}
@@ -66,6 +74,7 @@ export default function TabTwoScreen() {
           <ThemedText type="link">Learn more</ThemedText>
         </ExternalLink>
       </Collapsible>
+
       <Collapsible title="Light and dark mode components">
         <ThemedText>
           This template has light and dark mode support. The{' '}
@@ -76,6 +85,7 @@ export default function TabTwoScreen() {
           <ThemedText type="link">Learn more</ThemedText>
         </ExternalLink>
       </Collapsible>
+
       <Collapsible title="Animations">
         <ThemedText>
           This template includes an example of an animated component. The{' '}
@@ -102,9 +112,21 @@ const styles = StyleSheet.create({
     bottom: -90,
     left: -35,
     position: 'absolute',
+    width: width * 0.9, // Responsive width for the icon
   },
   titleContainer: {
     flexDirection: 'row',
     gap: 8,
+    marginBottom: 16, // Added some margin for spacing
+  },
+  descriptionText: {
+    marginBottom: 16, // Added space below the description text
+    paddingHorizontal: 16,
+  },
+  image: {
+    alignSelf: 'center',
+    marginTop: 16,
+    width: 200, // Fixed width for image to keep it consistent
+    height: 200, // Fixed height to keep aspect ratio
   },
 });
