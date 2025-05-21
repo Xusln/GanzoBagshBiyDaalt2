@@ -1,132 +1,129 @@
 import { Image } from 'expo-image';
-import { Platform, StyleSheet, Dimensions } from 'react-native';
+import { ScrollView, View, Text, StyleSheet, Dimensions, Platform } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
-import { Collapsible } from '@/components/Collapsible';
-import { ExternalLink } from '@/components/ExternalLink';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-import { IconSymbol } from '@/components/ui/IconSymbol';
+import BannerCarousel from '@/components/ui/BannerCarousel';
+import CategoryButtons from '@/components/ui/CategoryButtons';
+import ProductSection from '@/components/ui/ProductSection';
+import SearchBar from '@/components/ui/SearchBar';
 
-const { width } = Dimensions.get('window'); // Get screen width for responsiveness
+const { width } = Dimensions.get('window');
 
-export default function TabTwoScreen() {
+export default function ExploreScreen() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
-      headerImage={
-        <IconSymbol
+    <ScrollView contentContainerStyle={styles.container}>
+      {/* Header */}
+      <View style={styles.headerImageContainer}>
+        <Ionicons
+          name="chevron-forward-circle-outline"
           size={310}
           color="#808080"
-          name="chevron.left.forwardslash.chevron.right"
-          style={styles.headerImage}
+          style={styles.headerIcon}
         />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Explore</ThemedText>
-      </ThemedView>
-      <ThemedText style={styles.descriptionText}>
-        This app includes example code to help you get started.
-      </ThemedText>
-      
-      <Collapsible title="File-based routing">
-        <ThemedText>
-          This app has two screens:{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/explore.tsx</ThemedText>
-        </ThemedText>
-        <ThemedText>
-          The layout file in <ThemedText type="defaultSemiBold">app/(tabs)/_layout.tsx</ThemedText>{' '}
-          sets up the tab navigator.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/router/introduction">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
+      </View>
 
-      <Collapsible title="Android, iOS, and web support">
-        <ThemedText>
-          You can open this project on Android, iOS, and the web. To open the web version, press{' '}
-          <ThemedText type="defaultSemiBold">w</ThemedText> in the terminal running this project.
-        </ThemedText>
-      </Collapsible>
+      <View style={styles.contentContainer}>
+        <Text style={styles.title}>Explore</Text>
+        <Text style={styles.description}>Энэ апп нь эхлүүлэхэд зориулсан жишээ код агуулсан.</Text>
 
-      <Collapsible title="Images">
-        <ThemedText>
-          For static images, you can use the <ThemedText type="defaultSemiBold">@2x</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">@3x</ThemedText> suffixes to provide files for
-          different screen densities.
-        </ThemedText>
-        <Image source={require('@/assets/images/react-logo.png')} style={styles.image} />
-        <ExternalLink href="https://reactnative.dev/docs/images">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
+        {/* Search bar */}
+        <SearchBar />
 
-      <Collapsible title="Custom fonts">
-        <ThemedText>
-          Open <ThemedText type="defaultSemiBold">app/_layout.tsx</ThemedText> to see how to load{' '}
-          <ThemedText style={{ fontFamily: 'SpaceMono' }}>
-            custom fonts such as this one.
-          </ThemedText>
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/versions/latest/sdk/font">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
+        {/* Banner carousel */}
+        <BannerCarousel />
 
-      <Collapsible title="Light and dark mode components">
-        <ThemedText>
-          This template has light and dark mode support. The{' '}
-          <ThemedText type="defaultSemiBold">useColorScheme()</ThemedText> hook lets you inspect
-          what the user&apos;s current color scheme is, and so you can adjust UI colors accordingly.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/develop/user-interface/color-themes/">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
+        {/* Category buttons */}
+        <CategoryButtons />
 
-      <Collapsible title="Animations">
-        <ThemedText>
-          This template includes an example of an animated component. The{' '}
-          <ThemedText type="defaultSemiBold">components/HelloWave.tsx</ThemedText> component uses
-          the powerful <ThemedText type="defaultSemiBold">react-native-reanimated</ThemedText>{' '}
-          library to create a waving hand animation.
-        </ThemedText>
-        {Platform.select({
-          ios: (
-            <ThemedText>
-              The <ThemedText type="defaultSemiBold">components/ParallaxScrollView.tsx</ThemedText>{' '}
-              component provides a parallax effect for the header image.
-            </ThemedText>
-          ),
-        })}
-      </Collapsible>
-    </ParallaxScrollView>
+        {/* Product section */}
+        <ProductSection title="Онцлох бүтээгдэхүүн" />
+
+        {/* Section */}
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Файл дээр суурилсан чиглүүлэлт</Text>
+          <Text style={styles.text}>Энэ апп нь 2 дэлгэцтэй: index.tsx болон explore.tsx</Text>
+          <Text style={styles.text}>_layout.tsx файл нь таб навигацын бүтэц зохионо.</Text>
+        </View>
+
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Android, iOS болон Web дэмжлэг</Text>
+          <Text style={styles.text}>Та энэ төслийг бүх платформ дээр туршиж болно.</Text>
+        </View>
+
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Зураг ашиглалт</Text>
+          <Text style={styles.text}>Өндөр нягтаршилтай дэлгэцэд зориулж @2x, @3x зургийг ашиглаж болно.</Text>
+          <Image
+            source={require('@/assets/images/react-logo.png')}
+            style={styles.image}
+          />
+        </View>
+
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Custom фонт</Text>
+          <Text style={styles.text}>SpaceMono фонтыг жишээ болгон ашигласан.</Text>
+        </View>
+
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Гэрэл болон харанхуй горим</Text>
+          <Text style={styles.text}>useColorScheme() hook ашиглан хэрэглэгчийн сонголтыг мэдэж болно.</Text>
+        </View>
+
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Animations</Text>
+          <Text style={styles.text}>react-native-reanimated ашиглан хөдөлгөөнт компонент хийсэн.</Text>
+          {Platform.OS === 'ios' && (
+            <Text style={styles.text}>ParallaxScrollView нь header зурагт параллакс эффект үүсгэнэ.</Text>
+          )}
+        </View>
+
+      </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  headerImage: {
-    color: '#808080',
-    bottom: -90,
-    left: -35,
-    position: 'absolute',
-    width: width * 0.9, // Responsive width for the icon
+  container: {
+    paddingBottom: 20,
   },
-  titleContainer: {
-    flexDirection: 'row',
-    gap: 8,
-    marginBottom: 16, // Added some margin for spacing
+  headerImageContainer: {
+    alignItems: 'center',
+    marginBottom: 20,
+    marginTop: 40,
   },
-  descriptionText: {
-    marginBottom: 16, // Added space below the description text
+  headerIcon: {
+    width: width * 0.9,
+  },
+  contentContainer: {
     paddingHorizontal: 16,
+  },
+  title: {
+    fontSize: 28,
+    fontWeight: '700',
+    marginBottom: 10,
+  },
+  description: {
+    fontSize: 16,
+    color: '#555',
+    marginBottom: 20,
+  },
+  section: {
+    marginBottom: 20,
+  },
+  sectionTitle: {
+    fontSize: 18,
+    fontWeight: '600',
+    marginBottom: 8,
+  },
+  text: {
+    fontSize: 14,
+    color: '#333',
+    marginBottom: 4,
   },
   image: {
     alignSelf: 'center',
     marginTop: 16,
-    width: 200, // Fixed width for image to keep it consistent
-    height: 200, // Fixed height to keep aspect ratio
+    width: 200,
+    height: 200,
   },
 });

@@ -1,15 +1,19 @@
-import React from 'react';
-import { TextInput, StyleSheet, View } from 'react-native';
+import React, { useState } from 'react';
+import { View, TextInput, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 export default function SearchBar() {
+  const [query, setQuery] = useState('');
+
   return (
     <View style={styles.container}>
       <Ionicons name="search" size={20} color="#888" style={styles.icon} />
       <TextInput
-        placeholder="Хайх..."
-        placeholderTextColor="#888"
         style={styles.input}
+        placeholder="Хайх"
+        value={query}
+        onChangeText={setQuery}
+        returnKeyType="search"
       />
     </View>
   );
@@ -18,11 +22,12 @@ export default function SearchBar() {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#f1f1f1',
     borderRadius: 8,
-    padding: 10,
+    paddingHorizontal: 12,
     alignItems: 'center',
-    marginBottom: 16,
+    marginBottom: 20,
+    height: 40,
   },
   icon: {
     marginRight: 8,
