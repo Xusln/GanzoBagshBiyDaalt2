@@ -6,19 +6,19 @@ const products = [
     id: '1',
     name: 'Бүтээгдэхүүн 1',
     price: '₮10,000',
-    image: require('@/assets/images/product1.jpg'),
+    image: require('@/assets/images/cat-pet.jpg'),
   },
   {
     id: '2',
     name: 'Бүтээгдэхүүн 2',
     price: '₮20,000',
-    image: require('@/assets/images/product2.jpg'),
+    image: require('@/assets/images/cat-frozen.jpg'),
   },
   {
     id: '3',
     name: 'Бүтээгдэхүүн 3',
     price: '₮15,000',
-    image: require('@/assets/images/product3.jpg'),
+    image: require('@/assets/images/cat-18plus.png'),
   },
 ];
 

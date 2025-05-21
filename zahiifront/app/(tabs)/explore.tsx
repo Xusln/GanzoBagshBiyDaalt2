@@ -2,10 +2,10 @@ import { Image } from 'expo-image';
 import { ScrollView, View, Text, StyleSheet, Dimensions, Platform } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-import BannerCarousel from '@/components/ui/BannerCarousel';
-import CategoryButtons from '@/components/ui/CategoryButtons';
-import ProductSection from '@/components/ui/ProductSection';
-import SearchBar from '@/components/ui/SearchBar';
+import BannerCarousel from '@/components/BannerCarousel';
+import CategoryButtons from '@/components/CategoryButtons';
+import ProductSection from '@/components/ProductSection';
+import SearchBar from '@/components/SearchBar';
 
 const { width } = Dimensions.get('window');
 

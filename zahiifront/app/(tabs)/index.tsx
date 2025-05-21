@@ -6,12 +6,12 @@ import { useEffect, useState } from 'react';
 const { width } = Dimensions.get('window');
 
 const categories = [
-  { name: 'Хөлдөөсөн хүнс', image: require('@/assets/images/cat-frozen.png') },
+  { name: 'Хөлдөөсөн хүнс', image: require('@/assets/images/cat-frozen.jpg') },
   { name: 'Багцаар нь авья', image: require('@/assets/images/cat-bundle.png') },
   { name: '+18 Электрон', image: require('@/assets/images/cat-18plus.png') },
   { name: 'Маргаашийн хүргэлт', image: require('@/assets/images/cat-fresh.png') },
   { name: 'Бэлэг', image: require('@/assets/images/cat-gift.png') },
-  { name: 'Тэжээвэр амьтан', image: require('@/assets/images/cat-pet.png') },
+  { name: 'Тэжээвэр амьтан', image: require('@/assets/images/cat-pet.jpg') },
 ];
 
 export default function HomeScreen() {
@@ -37,7 +37,7 @@ export default function HomeScreen() {
 
       {/* Banner */}
       <Image
-        source={require('@/assets/images/banner.jpg')}
+        source={require('@/assets/images/banner.png')}
         style={styles.banner}
         contentFit="cover"
       />
